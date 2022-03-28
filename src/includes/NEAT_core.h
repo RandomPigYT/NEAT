@@ -8,7 +8,7 @@ typedef uint8_t bool;
 typedef struct node_t{
     uint32_t index;
 
-    uint32_t activation;
+    float activation;
     uint32_t layer;
 
     uint32_t* outNodes;
@@ -32,7 +32,8 @@ typedef struct genome_t{
     Node* nodes;
     Connection* connections;
 
-
+    uint32_t numberOfNodes;
+    uint32_t numberOfConnections;    
 } Genome;
 
 
