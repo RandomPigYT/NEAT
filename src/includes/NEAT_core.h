@@ -30,7 +30,7 @@ typedef struct connection_t{
 
 typedef struct genome_t{
     Node* nodes;
-    Connection connections;
+    Connection* connections;
 
 
 } Genome;
