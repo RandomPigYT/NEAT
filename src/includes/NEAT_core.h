@@ -71,6 +71,6 @@ uint32_t numOutputs;
 
 uint32_t popSize;
 
-
+void mutate(Genome* genome);
 #endif
 

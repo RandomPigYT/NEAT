@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
+
 Node createNode(uint32_t index, uint8_t type){
     Node node;
     
@@ -63,6 +64,9 @@ Genome createGenome(){
 }
 
 void createPopulation(uint32_t numberOfInputs, uint32_t numberOfOutputs, uint32_t populationSize){
+    
+    
+    
     numInputs = numberOfInputs;
     numOutputs = numberOfOutputs;
 
