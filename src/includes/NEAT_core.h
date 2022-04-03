@@ -1,9 +1,27 @@
 #ifndef NEAT_CORE_H
 #define NEAT_CORE_H
 
+
 #include "NEAT.h"
+#include <stdbool.h>
+
+
+//=========================================================================================================================
+
+// Typedefs
+
+//=========================================================================================================================
+
 
 typedef uint8_t BOOL;
+
+
+//=========================================================================================================================
+
+// Struct defenitions
+
+//=========================================================================================================================
+
 
 typedef struct node_t{
     uint32_t index;
@@ -17,15 +35,16 @@ typedef struct node_t{
     uint32_t numInNodes;
     uint32_t numOutNodes;
 
-    uint32_t numInRecurrent;
-    uint32_t numOutRecurrent;
+    
 
     uint8_t type;
 
 } Node;
 
+
+
 typedef struct connection_t{
-    int32_t weight;
+    float weight;
 
     uint32_t inNode;
     uint32_t outNode;
@@ -39,6 +58,7 @@ typedef struct connection_t{
 } Connection;
 
 
+
 typedef struct genome_t{
     Node* nodes;
     Connection* connections;
@@ -46,10 +66,28 @@ typedef struct genome_t{
     uint32_t numberOfNodes;
     uint32_t numberOfConnections;
 
+    Layer* layers;
+    
     uint32_t numberOfLayers;
 
-    Genome** layers;
 } Genome;
+
+
+
+typedef struct layer_t{
+
+    Node** nodes;
+    
+    uint32_t numberOfNodes; 
+    
+} Layer;
+
+//=========================================================================================================================
+
+// Enums
+
+//=========================================================================================================================
+
 
 enum node_types{
     INPUT,
@@ -57,20 +95,48 @@ enum node_types{
     HIDDEN
 };
 
+
+
 enum connection_types{
     FEED_FORWARD,
     RECURRENT
 };
 
-Genome* population;
 
-uint32_t globalInnovation;
+//=========================================================================================================================
+
+// Global variables
+
+//=========================================================================================================================
+
+Genome* population;
+uint32_t popSize;
+
+
+
+uint32_t globalInnovationNumber;
+    
+Connection* geneMemory;
+uint32_t geneMemorySize;
+
+
 
 uint32_t numInputs;
 uint32_t numOutputs;
 
-uint32_t popSize;
+//=========================================================================================================================
+
+// Fucntions
+
+//=========================================================================================================================
 
 void mutate(Genome* genome);
+
+
+
+Node createNode(uint32_t index, uint8_t type);
+Connection createConnection(uint32_t inNode, uint32_t outNode, uint32_t innovation, uint8_t type);
+
+
 #endif
 

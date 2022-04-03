@@ -5,20 +5,16 @@
 #include <assert.h>
 
 
-Node createNode(uint32_t index, uint8_t type){
+Node addNode(uint32_t index, uint8_t type){
     Node node;
     
     node.activation = 0.0f;
-    
-    
-    node.layer = 0;
-
+      
+      
     node.numInNodes = 0;
     node.numOutNodes = 0;
 
-    node.numOutRecurrent = 0;
-    node.numInRecurrent = 0;
-    
+       
     node.type = type;
 
     node.index = index;
@@ -34,12 +30,15 @@ Node createNode(uint32_t index, uint8_t type){
 }
 
 
+
 Genome createGenome(){
 
     Genome genome;
 
     uint32_t numberOfNodes = numInputs + numOutputs;
     genome.nodes = malloc(numberOfNodes * sizeof(Node));
+
+    
 
     //assert(genome.nodes != NULL && "Failed to allocate memory to genome.nodes\n");
 
@@ -51,16 +50,18 @@ Genome createGenome(){
     genome.numberOfNodes = numInputs + numOutputs;
  
     for(uint32_t i = 0; i < numInputs; i++){
-        genome.nodes[i] = createNode(i, INPUT);
+        genome.nodes[i] = addNode(i, INPUT);
     }
 
     for(uint32_t i = numInputs; i < (numInputs + numOutputs); i++){
-        genome.nodes[i] = createNode(i, OUTPUT);
+        genome.nodes[i] = addNode(i, OUTPUT);
     }
 
-    genome.numberOfLayers = 2;
+    genome.numberOfLayers = 2;  // Since only the input and the output layers exist at this stage
 
-    return genome;
+  
+
+    
 }
 
 void createPopulation(uint32_t numberOfInputs, uint32_t numberOfOutputs, uint32_t populationSize){
