@@ -3,7 +3,7 @@
 
 #include "NEAT.h"
 
-typedef uint8_t bool;
+typedef uint8_t BOOL;
 
 typedef struct node_t{
     uint32_t index;
@@ -13,6 +13,15 @@ typedef struct node_t{
 
     uint32_t* outNodes;
     uint32_t* inNodes;
+
+    uint32_t numInNodes;
+    uint32_t numOutNodes;
+
+    uint32_t numInRecurrent;
+    uint32_t numOutRecurrent;
+
+    uint8_t type;
+
 } Node;
 
 typedef struct connection_t{
@@ -23,7 +32,9 @@ typedef struct connection_t{
     
     uint32_t innovation;
 
-    bool isEnabled;
+    BOOL isEnabled;
+
+    uint8_t type;
 
 } Connection;
 
@@ -33,9 +44,23 @@ typedef struct genome_t{
     Connection* connections;
 
     uint32_t numberOfNodes;
-    uint32_t numberOfConnections;    
+    uint32_t numberOfConnections;
+
+    uint32_t numberOfLayers;
+
+    Genome** layers;
 } Genome;
 
+enum node_types{
+    INPUT,
+    OUTPUT,
+    HIDDEN
+};
+
+enum connection_types{
+    FEED_FORWARD,
+    RECURRENT
+};
 
 Genome* population;
 
@@ -44,5 +69,8 @@ uint32_t globalInnovation;
 uint32_t numInputs;
 uint32_t numOutputs;
 
+uint32_t popSize;
+
 
 #endif
+
