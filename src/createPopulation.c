@@ -19,11 +19,11 @@ Node addNode(uint32_t index, uint8_t type){
 
     node.index = index;
 
-    if(type == INPUT){
+    if(type == INPUT || type == BIAS){
         node.layer = 0;
     }
 
-    else{
+    else if(type == OUTPUT){
         node.layer = 1;
     }
     return node;
@@ -48,8 +48,10 @@ Genome createGenome(){
         exit(EXIT_FAILURE);
     }
     genome.numberOfNodes = numInputs + numOutputs;
- 
-    for(uint32_t i = 0; i < numInputs; i++){
+    
+    genome.nodes[0] = addNode(0, BIAS); // Create the bias neuron
+
+    for(uint32_t i = 1; i < numInputs; i++){
         genome.nodes[i] = addNode(i, INPUT);
     }
 
@@ -68,7 +70,7 @@ void createPopulation(uint32_t numberOfInputs, uint32_t numberOfOutputs, uint32_
     
     
     
-    numInputs = numberOfInputs;
+    numInputs = numberOfInputs + 1;
     numOutputs = numberOfOutputs;
 
     population = malloc(populationSize * sizeof(Genome));

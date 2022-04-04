@@ -59,6 +59,16 @@ typedef struct connection_t{
 
 
 
+typedef struct layer_t{
+
+    Node** nodes;
+    
+    uint32_t numberOfNodes; 
+    
+} Layer;
+
+
+
 typedef struct genome_t{
     Node* nodes;
     Connection* connections;
@@ -73,14 +83,14 @@ typedef struct genome_t{
 } Genome;
 
 
+typedef struct memory_t{
 
-typedef struct layer_t{
+    uint32_t in;
+    uint32_t out;
 
-    Node** nodes;
-    
-    uint32_t numberOfNodes; 
-    
-} Layer;
+    uint32_t innovation;
+} Memory;
+
 
 //=========================================================================================================================
 
@@ -92,7 +102,8 @@ typedef struct layer_t{
 enum node_types{
     INPUT,
     OUTPUT,
-    HIDDEN
+    HIDDEN,
+    BIAS
 };
 
 
@@ -115,9 +126,11 @@ uint32_t popSize;
 
 
 uint32_t globalInnovationNumber;
-    
-Connection* geneMemory;
-uint32_t geneMemorySize;
+
+Memory* geneMemory;
+uint32_t numGenesInMemory;
+uint32_t remainingMemory;   // To keep track of the amount of malloc'd memory remaining 
+
 
 
 
@@ -135,8 +148,10 @@ void mutate(Genome* genome);
 
 
 Node createNode(uint32_t index, uint8_t type);
-Connection createConnection(uint32_t inNode, uint32_t outNode, uint32_t innovation, uint8_t type);
+Connection createConnection(uint32_t inNode, uint32_t outNode, uint8_t type);
 
+// Sets the innovation
+void setInnovation(Connection* con);
 
 #endif
 
