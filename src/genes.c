@@ -106,3 +106,5 @@ Connection createConnection(uint32_t inNode, uint32_t outNode, uint8_t type){
     
     return con;
 }
+
+// TODO: Test these functions
