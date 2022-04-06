@@ -32,6 +32,8 @@ void initConMem(Genome* genome){
 
 void addConnection(Genome* genome){
 
+    printf("Adding connection\n");
+
     uint8_t type;
 
     uint32_t out = (int)(((float)(rand()) / RAND_MAX) * ((genome->numberOfNodes - 1) - 0) + 0);
