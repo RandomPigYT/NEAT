@@ -156,5 +156,7 @@ Connection createConnection(uint32_t inNode, uint32_t outNode, uint8_t type);
 // Sets the innovation
 void setInnovation(Connection* con);
 
+void sortToLayers(Genome* genome);
+
 #endif
 
