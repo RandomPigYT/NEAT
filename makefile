@@ -3,7 +3,9 @@ FLAGS = -g -Wall -Wextra -O2
 
 OBJECT_FILES = createPopulation.o main.o mutate.o genes.o
 
-all: compile link clean
+COMMANDS = compile link clean
+
+all: $(COMMANDS)
 
 compile: src/createPopulation.c
 	$(CC) $(FLAGS) -c src/createPopulation.c
