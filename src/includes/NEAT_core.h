@@ -76,6 +76,9 @@ typedef struct genome_t{
     uint32_t numberOfNodes;
     uint32_t numberOfConnections;
 
+    uint32_t remainingConMem;
+    uint32_t remainingNodeMem;
+
     Layer* layers;
     
     uint32_t numberOfLayers;
