@@ -12,7 +12,8 @@ Node addNode(uint32_t index, uint8_t type, Genome* genome){
       
       
     node.numInNodes = 0;
-    node.numOutNodes = 0;
+    
+    
 
        
     node.type = type;
