@@ -29,13 +29,11 @@ typedef struct node_t{
     float activation;
     uint32_t layer;
 
-    uint32_t* outNodes;
+    
     uint32_t* inNodes;
 
     uint32_t numInNodes;
-    uint32_t numOutNodes;
-
-    
+    uint32_t remainingInNodeMem;    
 
     uint8_t type;
 

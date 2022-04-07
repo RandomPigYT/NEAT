@@ -20,6 +20,5 @@ clean:
 	rm *.o
 
 run:
-	clear
 	./build/NEAT.out
 

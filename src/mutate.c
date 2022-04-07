@@ -30,6 +30,7 @@ void initConMem(Genome* genome){
 }
 
 
+
 void addConnection(Genome* genome){
 
     printf("Adding connection\n");
@@ -55,6 +56,20 @@ void addConnection(Genome* genome){
 
     
     genome->connections[genome->numberOfConnections] = createConnection(inIndex, outIndex, type);
+
+    // Too lazy to create another function :p
+    if(genome->nodes[inIndex].numInNodes == 0){
+        genome->nodes[inIndex].inNodes = malloc(10 * sizeof(uint32_t));
+        genome->nodes[inIndex].remainingInNodeMem = 10;
+    }
+    else {
+        if(genome->nodes[inIndex].remainingInNodeMem == 0){
+            genome->nodes[inIndex].inNodes = realloc(genome->nodes[inIndex].inNodes, (genome->nodes[inIndex].numInNodes + 10) * sizeof(uint32_t));
+            genome->nodes[inIndex].remainingInNodeMem = 10;
+        }
+    }
+
+    genome->nodes[inIndex].inNodes[genome->nodes[inIndex].numInNodes] = genome->connections[genome->numberOfConnections].innovation;
 
     genome->numberOfConnections++;
     genome->remainingConMem--;
