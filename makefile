@@ -1,19 +1,20 @@
 CC = gcc
 FLAGS = -g -Wall -Wextra -O2 
 
-OBJECT_FILES = createPopulation.o main.o mutate.o genes.o
+OBJECT_FILES = createPopulation.o main.o mutate.o genes.o layer.o
 
 COMMANDS = compile link clean
 
 all: $(COMMANDS)
 
-compile: src/createPopulation.c
+compile: src/createPopulation.c src/mutate.c src/genes.c
 	$(CC) $(FLAGS) -c src/createPopulation.c
 	$(CC) $(FLAGS) -c src/main.c
 	$(CC) $(FLAGS) -c src/mutate.c
 	$(CC) $(FLAGS) -c src/genes.c
+	$(CC) $(FLAGS) -c src/layer.c
 
-link: createPopulation.o main.o genes.o
+link: createPopulation.o main.o genes.o mutate.o layer.o
 	gcc $(OBJECT_FILES) -o build/NEAT.out
 
 clean:

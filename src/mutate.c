@@ -70,11 +70,13 @@ void addConnection(Genome* genome){
     }
 
     genome->nodes[inIndex].inNodes[genome->nodes[inIndex].numInNodes] = genome->connections[genome->numberOfConnections].innovation;
+    genome->nodes[inIndex].remainingInNodeMem--;
 
+    
     genome->numberOfConnections++;
     genome->remainingConMem--;
 
-    
+    sortToLayers(genome);
 
     return;
 }
