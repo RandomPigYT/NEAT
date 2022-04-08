@@ -110,11 +110,12 @@ uint32_t findNode(Genome* genome, uint32_t index){
     }
 }
 
-void addNode(Genome* genome){
+void addNodeMut(Genome* genome){
     
-
+    
     uint32_t conIndex = (int)(((float)(rand()) / RAND_MAX) * ((genome->numberOfConnections - 1) - 0) + 0);
 
+    printf("%d\n", genome->numberOfConnections);
     Node node = createNode(findMaxIndex(genome) + 1);
 
     initNodeMem(genome);
@@ -143,13 +144,15 @@ void addNode(Genome* genome){
     genome->connections[genome->numberOfConnections] = con2;
     genome->numberOfConnections++;
     genome->remainingConMem--;
+
+    printf("added node\n");
 }
 
 
 
 void mutateNode(Genome* genome){
     
-
+    addNodeMut(genome);
 
 }
 
@@ -173,16 +176,19 @@ void mutate(Genome* genome){
 
     float temp = (float)(((float)(rand()) / (float)(RAND_MAX)) * (max - min) + min);
     
-   addConnection(genome);
+    if(genome->numberOfConnections == 0) addConnection(genome);
+     
+     else{
+    
+        if(temp < nodeMutationProbability){
+            mutateNode(genome);
+        }
 
- /*   if(temp < nodeMutationProbability){
-        mutateNode(genome);
-    }
-
-    else{
-        mutateConnection(genome);
-    }
-    */
+        else{
+            mutateConnection(genome);
+        }
+    
+     }
 
    return;
 }   
