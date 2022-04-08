@@ -111,7 +111,7 @@ uint32_t findNode(Genome* genome, uint32_t index){
 }
 
 void addNode(Genome* genome){
-    //TODO: add mutate node functionality
+    
 
     uint32_t conIndex = (int)(((float)(rand()) / RAND_MAX) * ((genome->numberOfConnections - 1) - 0) + 0);
 
