@@ -37,6 +37,8 @@ typedef struct node_t{
 
     uint8_t type;
 
+    float x, y;
+
 } Node;
 
 
@@ -80,6 +82,8 @@ typedef struct genome_t{
     Layer* layers;
     
     uint32_t numberOfLayers;
+
+    float fitness;
 
 } Genome;
 
@@ -148,7 +152,7 @@ void mutate(Genome* genome);
 
 
 
-Node createNode(uint32_t index, uint8_t type);
+Node createNode(uint32_t index);
 Connection createConnection(uint32_t inNode, uint32_t outNode, uint8_t type);
 
 // Sets the innovation
@@ -156,5 +160,6 @@ void setInnovation(Connection* con);
 
 void sortToLayers(Genome* genome);
 
+Genome createGenome();
 #endif
 

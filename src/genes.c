@@ -3,9 +3,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Node createNode(uint32_t index, uint8_t type){
+Node createNode(uint32_t index){
     Node node;
 
+    node.activation = 0.0f;
+    node.index = index;
+    node.type = HIDDEN;
+    
+    node.inNodes = malloc(10 * sizeof(uint32_t));
+    node.numInNodes = 0;
+    node.remainingInNodeMem = 10; 
+    node.layer = 0;
 
     return node;    
 }

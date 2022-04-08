@@ -39,6 +39,8 @@ Genome createGenome(){
 
     Genome genome;
 
+    genome.fitness = 0.0f;
+
     uint32_t numberOfNodes = numInputs + numOutputs;
     genome.nodes = malloc((numberOfNodes + 10) * sizeof(Node));
 
