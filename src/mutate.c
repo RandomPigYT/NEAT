@@ -166,7 +166,7 @@ void mutateNode(Genome* genome){
 }
 
 void mutateConnection(Genome* genome){
-    for(int i = 0; i < 100; i++){
+    for(int i = 0; i < 20; i++){
         BOOL addedCon = addConnection(genome);
         if(addedCon) return;
     }
