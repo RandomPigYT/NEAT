@@ -1,7 +1,7 @@
 CC = gcc
 FLAGS = -g -Wall -Wextra -O2 
 
-OBJECT_FILES = createPopulation.o main.o mutate.o genes.o layer.o
+OBJECT_FILES = createPopulation.o main.o genes.o layer.o mutate.o
 
 COMMANDS = compile link clean
 

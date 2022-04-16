@@ -87,6 +87,8 @@ void createPopulation(uint32_t numberOfInputs, uint32_t numberOfOutputs, uint32_
     for(uint32_t i = 0; i < populationSize; i++){
         population[i] = createGenome();
     }
+
+
     return;
 }
 

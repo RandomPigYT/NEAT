@@ -46,8 +46,8 @@ typedef struct node_t{
 typedef struct connection_t{
     float weight;
 
-    uint32_t inNode;
-    uint32_t outNode;
+    uint32_t from;    //outNode
+    uint32_t to;   //inNode
     
     uint32_t innovation;
 
@@ -153,7 +153,7 @@ void mutate(Genome* genome);
 
 
 Node createNode(uint32_t index);
-Connection createConnection(uint32_t inNode, uint32_t outNode, uint8_t type);
+Connection createConnection(uint32_t to, uint32_t from, uint8_t type);
 
 // Sets the innovation
 void setInnovation(Connection* con);
@@ -161,5 +161,8 @@ void setInnovation(Connection* con);
 void sortToLayers(Genome* genome);
 
 Genome createGenome();
+
+void mutateConnection(Genome* genome);
+void mutateNode(Genome* genome);
 #endif
 

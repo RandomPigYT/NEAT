@@ -23,7 +23,7 @@ void setInnovation(Connection* con){
     uint32_t index;
 
     for(uint32_t i = 0; i < numGenesInMemory; i++){
-        if(con->inNode == geneMemory[i].in && con->outNode == geneMemory[i].out){
+        if(con->to == geneMemory[i].in && con->from == geneMemory[i].out){
             exists = true;
             index = i;
         }
@@ -41,8 +41,8 @@ void setInnovation(Connection* con){
 
             remainingMemory = 10;
 
-            geneMemory[numGenesInMemory].in = con->inNode;
-            geneMemory[numGenesInMemory].out = con->outNode;
+            geneMemory[numGenesInMemory].in = con->to;
+            geneMemory[numGenesInMemory].out = con->from;
 
             globalInnovationNumber++;
 
@@ -58,8 +58,8 @@ void setInnovation(Connection* con){
 
         else {
             if(remainingMemory != 0){
-                geneMemory[numGenesInMemory].in = con->inNode;
-                geneMemory[numGenesInMemory].out = con->outNode;
+                geneMemory[numGenesInMemory].in = con->to;
+                geneMemory[numGenesInMemory].out = con->from;
 
                 globalInnovationNumber++;
 
@@ -77,8 +77,8 @@ void setInnovation(Connection* con){
                 
                 remainingMemory = 10;
                  
-                geneMemory[numGenesInMemory].in = con->inNode;
-                geneMemory[numGenesInMemory].out = con->outNode;
+                geneMemory[numGenesInMemory].in = con->to;
+                geneMemory[numGenesInMemory].out = con->from;
 
                 globalInnovationNumber++;
 
@@ -96,11 +96,11 @@ void setInnovation(Connection* con){
 }
 
 
-Connection createConnection(uint32_t inNode, uint32_t outNode, uint8_t type){
+Connection createConnection(uint32_t to, uint32_t from, uint8_t type){
     Connection con;
 
-    con.inNode = inNode;
-    con.outNode = outNode;
+    con.to = to;
+    con.from = from;
     
     con.type = type;
 
