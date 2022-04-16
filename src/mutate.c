@@ -132,15 +132,17 @@ void addNodeMut(Genome* genome){
     // Add a reference of the new node to the old node
     uint32_t tempNodeIndex = findNode(genome, cPtr->to);
     initInNodeMem(&(genome->nodes[tempNodeIndex]));
-    genome->nodes[tempNodeIndex].inNodes[genome->nodes[tempNodeIndex].numInNodes] = node.index;
-    genome->nodes[tempNodeIndex].numInNodes++;
-    genome->nodes[tempNodeIndex].remainingInNodeMem--;
+    genome->nodes[tempNodeIndex].inNodes[genome->nodes[tempNodeIndex].numInNodes - 1] = node.index;
 
+    
+
+    // Add the node to the genome
     initNodeMem(genome);
     genome->nodes[genome->numberOfNodes] = node;
     genome->numberOfNodes++;
     genome->remainingNodeMem--;
 
+    // Add the connections into the genome
     initConMem(genome);
     genome->connections[genome->numberOfConnections] = con1;
     genome->numberOfConnections++;
