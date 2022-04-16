@@ -109,8 +109,47 @@ uint32_t findNode(Genome* genome, uint32_t index){
 
 void addNodeMut(Genome* genome){
     
+    uint32_t conIndex = (int)(((float)(rand()) / RAND_MAX) * ((genome->numberOfConnections - 1) - 0) + 0);
     
+    Connection* cPtr = &(genome->connections[conIndex]);
+    cPtr->isEnabled = false;
+
+    Node node = createNode(findMaxIndex(genome));
     
+    // Create the connections
+    Connection con1 = createConnection(node.index, cPtr->from, FEED_FORWARD);
+    con1.weight = 1.0f;
+
+    Connection con2 = createConnection(cPtr->to, node.index, cPtr->type);
+    con2.weight = cPtr->weight;
+
+    initInNodeMem(&node);
+
+    node.inNodes[node.numInNodes] = cPtr->from;
+    node.numInNodes++;
+    node.remainingInNodeMem--;
+    
+    // Add a reference of the new node to the old node
+    uint32_t tempNodeIndex = findNode(genome, cPtr->to);
+    initInNodeMem(&(genome->nodes[tempNodeIndex]));
+    genome->nodes[tempNodeIndex].inNodes[genome->nodes[tempNodeIndex].numInNodes] = node.index;
+    genome->nodes[tempNodeIndex].numInNodes++;
+    genome->nodes[tempNodeIndex].remainingInNodeMem--;
+
+    initNodeMem(genome);
+    genome->nodes[genome->numberOfNodes] = node;
+    genome->numberOfNodes++;
+    genome->remainingNodeMem--;
+
+    initConMem(genome);
+    genome->connections[genome->numberOfConnections] = con1;
+    genome->numberOfConnections++;
+    genome->remainingConMem--;
+
+    initConMem(genome);
+    genome->connections[genome->numberOfConnections] = con2;
+    genome->numberOfConnections++;
+    genome->remainingConMem--;
 
 }
 
