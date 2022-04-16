@@ -60,6 +60,8 @@ BOOL addConnection(Genome* genome){
     uint32_t to = (int)(((float)(rand()) / RAND_MAX) * ((genome->numberOfNodes - 1) - 0) + 0);
     uint32_t from = (int)(((float)(rand()) / RAND_MAX) * ((genome->numberOfNodes - 1) - 0) + 0);
 
+    if(genome->nodes[to].layer == genome->nodes[from].layer) return false;
+
     uint8_t type = genome->nodes[from].layer < genome->nodes[to].layer ? FEED_FORWARD : RECURRENT;
     Connection con = createConnection(genome->nodes[to].index, genome->nodes[from].index, type);
 
