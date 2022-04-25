@@ -232,6 +232,8 @@ void addNodeMut(Genome* genome){
     genome->numberOfConnections++;
     genome->remainingConMem--;
 
+    sortToLayers(genome);
+
 }
 
 
