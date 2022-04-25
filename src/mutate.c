@@ -43,7 +43,6 @@ void initNodeMem(Genome* genome){
 }
 
 
-
 void initInNodeMem(Node* node){
 
     if(node->remainingInNodeMem == 0){
@@ -53,6 +52,45 @@ void initInNodeMem(Node* node){
         node->remainingInNodeMem = 10;
     }
 }
+
+uint32_t findMaxIndex(Genome* genome){
+    uint32_t max = 0;
+
+    for(uint32_t i = 0; i < genome->numberOfNodes; i++){
+        if(genome->nodes[i].index > max) max = genome->nodes[i].index;
+    }
+
+    return max;
+}
+
+
+uint32_t findNode(Genome* genome, uint32_t index){
+    for(uint32_t i = 0; i < genome->numberOfNodes; i++){
+        if(genome->nodes[i].index == index) return genome->nodes[i].index; 
+    }
+}
+
+
+//==================================================================================================================================================
+
+
+void removeCon(Genome* genome, uint32_t innovation){
+
+    uint32_t index;
+    for(uint32_t i = 0; i < genome->numberOfConnections; i++){
+        if(genome->connections[i].innovation == innovation) index = i;
+    }
+
+    for(uint32_t i = index + 1; i < genome->numberOfConnections; i++){
+        genome->connections[i - 1] = genome->connections[i];
+    }
+
+    genome->numberOfConnections--;
+    genome->remainingConMem++;
+
+    
+}
+
 
 BOOL addConnection(Genome* genome){
 
@@ -75,7 +113,7 @@ BOOL addConnection(Genome* genome){
     initInNodeMem(&(genome->nodes[to]));
     uint32_t nInNodes = genome->nodes[to].numInNodes;
 
-    genome->nodes[to].inNodes[nInNodes] = con.innovation;
+    genome->nodes[to].inNodes[nInNodes] = con.from;
     genome->nodes[to].remainingInNodeMem--;
     genome->nodes[to].numInNodes++;
 
@@ -85,26 +123,53 @@ BOOL addConnection(Genome* genome){
     genome->numberOfConnections++;
     genome->remainingConMem--;
 
-
+    return true;
 }
 
 
-uint32_t findMaxIndex(Genome* genome){
-    uint32_t max = 0;
 
-    for(uint32_t i = 0; i < genome->numberOfNodes; i++){
-        if(genome->nodes[i].index > max) max = genome->nodes[i].index;
+void removeNodeMut(Genome* genome){
+
+    //if(genome->numberOfNodes == numInputs + numOutputs) return;
+
+    uint32_t nodeIndex = (int)(((float)(rand()) / RAND_MAX) * ((genome->numberOfNodes - 1) - (numInputs + numOutputs)) + (numInputs + numOutputs));
+
+    Node* nPtr = &(genome->nodes[nodeIndex]);
+
+    
+    for(uint32_t i = 0; i < genome->numberOfConnections; i++){
+        
+         if(genome->connections[i].to == nPtr->index || genome->connections[i].from == nPtr->index){
+            
+            removeCon(genome, genome->connections[i].innovation);
+         }
     }
 
-    return max;
-}
 
+    
 
-uint32_t findNode(Genome* genome, uint32_t index){
-    for(uint32_t i = 0; i < genome->numberOfNodes; i++){
-        if(genome->nodes[i].index == index) return genome->nodes[i].index; 
+    free(nPtr->inNodes);
+
+    if(nodeIndex == genome->numberOfNodes - 1 && genome->nodes[nodeIndex].index != nPtr->index){
+        free(genome->nodes[nodeIndex].inNodes);
+
+        genome->numberOfNodes--;
+        genome->remainingNodeMem++;
+
+        return;
     }
+
+    for(uint32_t i = nodeIndex + 1; i < genome->numberOfNodes; i++){
+
+        genome->nodes[i - 1] = genome->nodes[i];
+    }
+
+
+    genome->numberOfNodes--;
+    genome->remainingNodeMem++;
 }
+
+
 
 
 
@@ -116,7 +181,7 @@ void addNodeMut(Genome* genome){
     Connection* cPtr = &(genome->connections[conIndex]);
     cPtr->isEnabled = false;
 
-    Node node = createNode(findMaxIndex(genome));
+    Node node = createNode(findMaxIndex(genome) + 1);
     
     // Create the connections
     Connection con1 = createConnection(node.index, cPtr->from, FEED_FORWARD);
@@ -134,10 +199,22 @@ void addNodeMut(Genome* genome){
     // Add a reference of the new node to the old node
     uint32_t tempNodeIndex = findNode(genome, cPtr->to);
     initInNodeMem(&(genome->nodes[tempNodeIndex]));
-    genome->nodes[tempNodeIndex].inNodes[genome->nodes[tempNodeIndex].numInNodes - 1] = node.index;
+    genome->nodes[tempNodeIndex].inNodes[genome->nodes[tempNodeIndex].numInNodes] = node.index;
+    genome->nodes[tempNodeIndex].numInNodes++;
+    genome->nodes[tempNodeIndex].remainingInNodeMem--;
 
+
+    // BOOL is = false;
+
+    // for(uint32_t i = 0; i < genome->nodes[tempNodeIndex].numInNodes; i++){
+    //     if(genome->nodes[tempNodeIndex].inNodes[i] == cPtr->from){
+    //         is = true;
+    //         genome->nodes[tempNodeIndex].inNodes[i] = node.index;
+    //     }
+    // }
     
-
+    // assert(is != false);
+    
     // Add the node to the genome
     initNodeMem(genome);
     genome->nodes[genome->numberOfNodes] = node;
@@ -155,6 +232,8 @@ void addNodeMut(Genome* genome){
     genome->numberOfConnections++;
     genome->remainingConMem--;
 
+    sortToLayers(genome);
+
 }
 
 
@@ -170,7 +249,7 @@ void mutateConnection(Genome* genome){
         BOOL addedCon = addConnection(genome);
         if(addedCon) return;
     }
-   // printf("Con not possible\n");
+
     
     return;
 }

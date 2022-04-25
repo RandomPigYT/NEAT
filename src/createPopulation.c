@@ -77,7 +77,7 @@ Genome createGenome(){
 
 void createPopulation(uint32_t numberOfInputs, uint32_t numberOfOutputs, uint32_t populationSize){
     
-    
+    popSize = populationSize;
     
     numInputs = numberOfInputs + 1;
     numOutputs = numberOfOutputs;
