@@ -37,7 +37,7 @@ typedef struct node_t{
 
     uint8_t type;
 
-    float x, y;
+    float pos[2];
 
 } Node;
 
@@ -46,14 +46,16 @@ typedef struct node_t{
 typedef struct connection_t{
     float weight;
 
-    uint32_t from;    //outNode
-    uint32_t to;   //inNode
+    uint32_t from;    
+    uint32_t to;   
     
     uint32_t innovation;
 
     BOOL isEnabled;
 
     uint8_t type;
+
+    float pos[4];
 
 } Connection;
 
@@ -84,6 +86,7 @@ typedef struct genome_t{
     uint32_t numberOfLayers;
 
     float fitness;
+    float adjustedFitness;
 
 } Genome;
 
@@ -164,5 +167,8 @@ Genome createGenome();
 
 void mutateConnection(Genome* genome);
 void mutateNode(Genome* genome);
+
+void removeCon(Genome* genome, uint32_t innovation);
+void removeNodeMut(Genome* genome);
 #endif
 

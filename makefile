@@ -1,7 +1,7 @@
 CC = gcc
 FLAGS = -g -Wall -Wextra -O2 
 
-OBJECT_FILES = createPopulation.o main.o genes.o layer.o mutate.o
+OBJECT_FILES = createPopulation.o main.o genes.o layer.o mutate.o draw.o
 
 COMMANDS = compile link clean
 
@@ -13,13 +13,14 @@ compile: src/createPopulation.c src/mutate.c src/genes.c
 	$(CC) $(FLAGS) -c src/mutate.c
 	$(CC) $(FLAGS) -c src/genes.c
 	$(CC) $(FLAGS) -c src/layer.c
-
+	$(CC) $(FLAGS) -c src/draw.c
 link: createPopulation.o main.o genes.o mutate.o layer.o
-	gcc $(OBJECT_FILES) -o build/NEAT.out
+	gcc $(FLAGS)  $(OBJECT_FILES) -o build/NEAT.out -lpthread -lSDL2main -lSDL2
 
 clean:
 	rm *.o
 
 run:
+	clear
 	./build/NEAT.out
 
