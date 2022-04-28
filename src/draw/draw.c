@@ -17,12 +17,12 @@ typedef struct data_t
 
 void createWindow(void* arg){
   
-  TTF_WasInit();
 
-  if(TTF_Init() != 0){
-    fprintf(stderr, "Failed to initialize ttf. Error: %s", TTF_GetError());
-    exit(EXIT_FAILURE);
-  }
+
+
+
+
+
 
  
   Data* data = arg;
@@ -77,7 +77,7 @@ void createWindow(void* arg){
   
   SDL_DestroyWindow(window);
    
-  TTF_Quit();
+
   SDL_Quit();
 
 }

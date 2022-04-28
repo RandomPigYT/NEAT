@@ -5,7 +5,7 @@ OBJECT_FILES = createPopulation.o main.o genes.o layer.o mutate.o draw.o render.
 
 COMMANDS =compile link clean
 
-LIBS = -lpthread -lSDL2main -lSDL2 -lSDL2_image -lSDL2_gfx -lSDL2_ttf
+LIBS = -lpthread -lSDL2main -lSDL2 -lSDL2_image -lSDL2_gfx 
 
 
 all: $(COMMANDS)

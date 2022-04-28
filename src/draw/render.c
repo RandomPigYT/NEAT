@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NODE_RADIUS 8.0f
+#define NODE_RADIUS 15.0f
 #define LINE_SCALE_X 3.0f
 #define LINE_SCALE_Y 3.0f
 
@@ -152,23 +152,7 @@ void drawNode(Node* node){
   
   SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
-  char* index[100];
-  SDL_itoa(node->index, index, 10);
-  
-  SDL_Color c = {.r = 255, .g = 255, .b = 255, .a = 255};
-  SDL_Surface* text;
-  SDL_Texture* texture;
-  SDL_Rect rect = {.h = 4, .w = 2, .x = node->pos[0] - 1, .y = node->pos[1] - 2};
 
-  text = TTF_RenderText_Solid("roboto.ttf", index, c);
-
-  if(text == NULL) fprintf(stderr, "failed to load text. Error: %s", TTF_GetError()); exit(EXIT_FAILURE);
-  free(index);
-
-  texture = SDL_CreateTextureFromSurface(renderer, text);
-
-  SDL_FreeSurface(text);
-  render(texture, rect);
 }
 
 void drawCon(Connection* con){
@@ -180,8 +164,9 @@ void drawCon(Connection* con){
 
   if(con->type == FEED_FORWARD) {
 
-    if(con->weight < 0) colour[0] = 133; colour[1] = 34; colour[2] = 34, colour[3] = 255;
-    if(con->weight > 0) colour[0] = 43; colour[1] = 148; colour[2] = 45, colour[3] = 255;
+    if(con->weight < 0.0f) colour[0] = 255; colour[1] = 0; colour[2] = 0, colour[3] = 255;
+    if(con->weight > 0.0f) colour[0] = 255; colour[1] = 255; colour[2] = 0, colour[3] = 255;
+    if(con->weight == 0.0f) colour[0] = 105; colour[1] = 105; colour[2] = 105, colour[3] = 255;
   }
 
   else colour[0] = 0; colour[1] = 0; colour[2] = 0, colour[3] = 255;

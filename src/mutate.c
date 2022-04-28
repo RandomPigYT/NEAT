@@ -188,8 +188,14 @@ void addNodeMut(Genome* genome){
 
     Node node = createNode(findMaxIndex(genome) + 1);
     
-    node.pos[0] = (cPtr->pos[0] + cPtr->pos[2]) / 2;
-    node.pos[1] = (cPtr->pos[1] + cPtr->pos[3]) / 2;
+    float xOff, yOff;
+
+
+    yOff = ((float) rand() / RAND_MAX) * (50.0f - (-50.0f)) + (-50.0f);
+
+
+    node.pos[0] = ((cPtr->pos[0] + cPtr->pos[2]) / 2);
+    node.pos[1] = ((cPtr->pos[1] + cPtr->pos[3]) / 2) + yOff;
 
     // Create the connections
     Connection con1 = createConnection(node.index, cPtr->from, cPtr->type);
