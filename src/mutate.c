@@ -103,7 +103,12 @@ BOOL addConnection(Genome* genome){
     uint8_t type = genome->nodes[from].layer < genome->nodes[to].layer ? FEED_FORWARD : RECURRENT;
     Connection con = createConnection(genome->nodes[to].index, genome->nodes[from].index, type);
 
-    
+    // Set its coords
+
+    con.pos[0] = genome->nodes[from].pos[0];
+    con.pos[1] = genome->nodes[from].pos[1];
+    con.pos[2] = genome->nodes[to].pos[0];    
+    con.pos[3] = genome->nodes[to].pos[1];    
     
 
     for(int i = 0; i < genome->numberOfConnections; i++){
@@ -183,8 +188,11 @@ void addNodeMut(Genome* genome){
 
     Node node = createNode(findMaxIndex(genome) + 1);
     
+    node.pos[0] = (cPtr->pos[0] + cPtr->pos[2]) / 2;
+    node.pos[1] = (cPtr->pos[1] + cPtr->pos[3]) / 2;
+
     // Create the connections
-    Connection con1 = createConnection(node.index, cPtr->from, FEED_FORWARD);
+    Connection con1 = createConnection(node.index, cPtr->from, cPtr->type);
     con1.weight = 1.0f;
 
     Connection con2 = createConnection(cPtr->to, node.index, cPtr->type);

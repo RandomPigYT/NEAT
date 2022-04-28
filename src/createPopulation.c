@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#define HEIGHT_START_COORDS 63
+#define HEIGHT_END_COORDS 442
+
 
 Node addNode(uint32_t index, uint8_t type, Genome* genome){
     Node node;
@@ -69,7 +72,25 @@ Genome createGenome(){
 
     genome.numberOfLayers = 2;  // Since only the input and the output layers exist at this stage
 
-  
+    
+
+    // Set the y coords of the input and the output nodes
+
+    float inpOffset = (HEIGHT_START_COORDS + HEIGHT_END_COORDS) / numInputs, outOffset = (HEIGHT_START_COORDS + HEIGHT_END_COORDS) / numOutputs;
+    uint32_t d = 0;
+
+    for(int32_t i = numInputs - 1; i >= 0; i--){
+        genome.nodes[i].pos[1] = d * inpOffset + HEIGHT_START_COORDS;
+        d++;
+    }   
+
+    d = 0;
+
+    for(uint32_t i = numInputs; i < numOutputs + numInputs; i++){
+        genome.nodes[i].pos[1] = d * outOffset + HEIGHT_START_COORDS;
+        d++;
+    }
+
     return genome;
 
     

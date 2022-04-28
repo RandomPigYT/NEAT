@@ -3,18 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-uint32_t numSortedNodes = 0;
 
-uint32_t* sorted;
+#define WIDTH_START_COORD 78
+#define WIDTH_END_COORD 550
 
-BOOL conatins(uint32_t index){
 
-    for(uint32_t i = 0; i < numSortedNodes; i++){
-        if(sorted[i] != index) continue;
-        else return true;            
-    }
-    return false;
-}
 
 Connection findCon(uint32_t to, uint32_t from, Genome* genome){
 
@@ -30,12 +23,32 @@ Node getNode(uint32_t index, Genome* genome){
     }
 }
 
-size_t currentSize;
 
+void verifyRecurrentCons(Genome* genome){
+
+    for(uint32_t i = 0; i < genome->numberOfConnections; i++){
+
+        if(genome->connections[i].type == RECURRENT){
+            Node to = getNode(genome->connections[i].to, genome);
+            Node from = getNode(genome->connections[i].from, genome);
+
+            if(to.layer == from.layer) genome->connections[i].isEnabled = false;
+            else if(from.layer < to.layer) genome->connections[i].type = FEED_FORWARD;
+        }
+    }
+}
 uint32_t recursiveSort(Node node, uint32_t currentLayer, Genome* genome){
     if(node.type == INPUT || node.type == BIAS) return currentLayer;
 
-    
+    // {
+    //     BOOL tempBool = false;
+
+    //     for(uint32_t i = 0; i < node.numInNodes; i++){
+    //         if(findCon(node.index, node.inNodes[i], genome).type == FEED_FORWARD) tempBool = true;
+    //     }
+
+    //     if(!tempBool) currentLayer--;
+    // }
 
     currentLayer++;
     uint32_t temp = currentLayer;
@@ -66,10 +79,32 @@ uint32_t findMaxLayer(Genome* genome){
 }
 
 
-void sortToLayers(Genome* genome){
-    sorted = malloc(genome->numberOfNodes * sizeof(Node));
-    numSortedNodes = 0;
 
+void setCoords(Genome* genome){
+
+    // Sets the coordinates of the nodes according to their layer
+    float offset;
+
+    offset =  (WIDTH_START_COORD + WIDTH_END_COORD) / genome->numberOfLayers;
+
+    for(uint32_t i = 0; i < genome->numberOfNodes; i++){
+        genome->nodes[i].pos[0] = offset * genome->nodes[i].layer + WIDTH_START_COORD;
+    }
+
+    // Sets coords of the connections
+    for(uint32_t i = 0; i < genome->numberOfConnections; i++){
+
+        genome->connections[i].pos[0] = getNode(genome->connections[i].from, genome).pos[0];
+        genome->connections[i].pos[1] = getNode(genome->connections[i].from, genome).pos[1];
+        genome->connections[i].pos[2] = getNode(genome->connections[i].to, genome).pos[0];
+        genome->connections[i].pos[3] = getNode(genome->connections[i].to, genome).pos[1];
+    }
+
+}
+
+
+void sortToLayers(Genome* genome){
+    
     uint32_t maxLayers = 1;
     // Load the input nodes into the buffer to sort
     
@@ -83,55 +118,11 @@ void sortToLayers(Genome* genome){
         if(genome->nodes[i].type == OUTPUT) genome->nodes[i].layer = outputLayer;
     }
 
-    // while (!isSorted){
-        
-    //     uint32_t* buffer;
-
-    //     buffer = malloc(genome->numberOfNodes * sizeof(Node));
-    //     uint32_t buffIndex = 0;
-        
-    //     isSorted = true;
-    //     for(uint32_t i = numInputs + numOutputs; i < genome->numberOfNodes; i++){
-    //     // Scroll through the nodes
-
-
-    //         BOOL temp = true;
-    //         for(uint32_t j = 0; j < genome->nodes[i].numInNodes; j++){
-    //             // Scroll through the inNodes of the current node
-                
-    //             // Check if the current node's inNodes have been sorted
-    //             Connection con = findCon(genome->nodes[i].index, genome->nodes[i].inNodes[j], genome);
-                
-    //             if(!conatins(genome->nodes[i].inNodes[j]) && con.type != RECURRENT && con.isEnabled)  temp = false; 
-    //         }
-
-    //         if(!temp) isSorted = false;
-
-    //         // Add the current node to the buffer
-    //         else{
-    //             buffer[buffIndex] = genome->nodes[i].index;
-    //             genome->nodes[i].layer = maxLayers;
-    //             buffIndex++;
-    //         }
-    //     }   
-
-    //     for( uint32_t i = 0; i < buffIndex; i++){
-    //         sorted[numSortedNodes] = buffer[i];
-    //         numSortedNodes++;
-    //     }
-        
-    //     maxLayers++;
-    //     free(buffer);
-    // }
+    genome->numberOfLayers = outputLayer;
     
-    
-    // for(uint32_t i = 0; i < genome->numberOfNodes; i++){
+    verifyRecurrentCons(genome);
 
-    //     if(genome->nodes[i].type == OUTPUT){
-    //         genome->nodes[i].layer = maxLayers;
-    //     }
-    // }
-
+    setCoords(genome);
     return;
 }
 
