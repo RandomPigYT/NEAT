@@ -50,9 +50,13 @@ typedef struct texture_t{
     Src src;
 }Texture;
 
+Genome* currentGenome;
+
 
 SDL_Window *window;
 SDL_Renderer* renderer;
+
+Node* grabbedNode;
 
 void render(SDL_Texture* texture, SDL_Rect dst);
 void display();
@@ -63,6 +67,8 @@ int SDL_RenderFillCircle(SDL_Renderer * renderer, float x, float y, float radius
 void drawNode(Node* node);
 void drawCon(Connection* con);
 
+
+void moveNodeWithMouse(int32_t x, int32_t y);
 
 #endif  //DRAW_HEADER_H
 

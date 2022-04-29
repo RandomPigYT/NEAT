@@ -164,8 +164,8 @@ void drawCon(Connection* con){
 
   if(con->type == FEED_FORWARD) {
 
-    if(con->weight < 0.0f) colour[0] = 255; colour[1] = 0; colour[2] = 0, colour[3] = 255;
-    if(con->weight > 0.0f) colour[0] = 255; colour[1] = 255; colour[2] = 0, colour[3] = 255;
+    if(con->weight < 0.0f) colour[0] = 0; colour[1] = 255; colour[2] = 0, colour[3] = 255;
+    if(con->weight > 0.0f) colour[0] = 255; colour[1] = 0; colour[2] = 0, colour[3] = 255;
     if(con->weight == 0.0f) colour[0] = 105; colour[1] = 105; colour[2] = 105, colour[3] = 255;
   }
 

@@ -101,7 +101,20 @@ BOOL addConnection(Genome* genome){
     if(genome->nodes[to].layer == genome->nodes[from].layer) return false;
 
     uint8_t type = genome->nodes[from].layer < genome->nodes[to].layer ? FEED_FORWARD : RECURRENT;
+
+    
+
     Connection con = createConnection(genome->nodes[to].index, genome->nodes[from].index, type);
+
+    
+
+    for(int i = 0; i < genome->numberOfConnections; i++){
+        if(con.innovation == genome->connections[i].innovation) return false; 
+    }
+    
+    float recurrentProb = ((float) rand() / RAND_MAX) * (1.0f - 0.0f) + 0.0f;
+    printf("recurrentProb: %f\n", recurrentProb);
+    if(recurrentProb < 0.2f && type == RECURRENT) return false; 
 
     // Set its coords
 
@@ -111,10 +124,6 @@ BOOL addConnection(Genome* genome){
     con.pos[3] = genome->nodes[to].pos[1];    
     
 
-    for(int i = 0; i < genome->numberOfConnections; i++){
-        if(con.innovation == genome->connections[i].innovation) return false; 
-    }
-    
     initInNodeMem(&(genome->nodes[to]));
     uint32_t nInNodes = genome->nodes[to].numInNodes;
 

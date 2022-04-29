@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef NEAT_CORE_H
 #define NEAT_CORE_H
 
@@ -156,6 +158,7 @@ uint32_t numOutputs;
 
 void mutate(Genome* genome);
 
+BOOL isPaused;
 
 
 Node createNode(uint32_t index);
@@ -173,5 +176,7 @@ void mutateNode(Genome* genome);
 
 void removeCon(Genome* genome, uint32_t innovation);
 void removeNodeMut(Genome* genome);
+
+Node getNode(uint32_t index, Genome* genome);
 #endif
 

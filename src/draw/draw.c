@@ -50,9 +50,23 @@ void createWindow(void* arg){
 
   BOOL shouldClose = false; 
   
+    currentGenome = genome; 
   
   while (!shouldClose){
     
+    // TODO: Add function to choose fittest genome
+
+
+    int32_t x, y;
+
+    Uint32 mouseState = SDL_GetMouseState(&x, &y);
+
+    if(mouseState & SDL_BUTTON_LMASK ) moveNodeWithMouse(x, y);
+    
+    else grabbedNode = NULL;
+
+
+ 
     while (SDL_PollEvent(&e)){
       if(e.type == SDL_QUIT) shouldClose = true;
       
@@ -82,7 +96,7 @@ void createWindow(void* arg){
 
 }
 
-void draw(void* args){
+pthread_t draw(void* args){
 
     pthread_t id;
 
@@ -93,7 +107,7 @@ void draw(void* args){
     
     pthread_create(&id, NULL, createWindow, &d);
 
-    pthread_join(id, NULL);
 
+  pthread_join(id, NULL);
     return;
 }
