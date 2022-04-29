@@ -34,7 +34,7 @@ void transformNode(int32_t x, int32_t y){
 
         float dist = sqrt(op1 + op2);
          
-         if(dist <= 20) {
+         if(dist <= 15) {
              currentGenome->nodes[i].pos[0] = x;
              currentGenome->nodes[i].pos[1] = y;
              grabbedNode = &(currentGenome->nodes[i]);

@@ -114,7 +114,7 @@ BOOL addConnection(Genome* genome){
     
     float recurrentProb = ((float) rand() / RAND_MAX) * (1.0f - 0.0f) + 0.0f;
     printf("recurrentProb: %f\n", recurrentProb);
-    if(recurrentProb < 0.2f && type == RECURRENT) return false; 
+    if(recurrentProb > 0.4f && type == RECURRENT) return false; 
 
     // Set its coords
 
