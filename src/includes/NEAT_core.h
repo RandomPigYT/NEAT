@@ -8,6 +8,12 @@
 #include <stdbool.h>
 
 
+#define WIDTH_START_COORD 78
+#define WIDTH_END_COORD 550
+#define HEIGHT_START_COORDS 63
+#define HEIGHT_END_COORDS 442
+
+
 //=========================================================================================================================
 
 // Typedefs

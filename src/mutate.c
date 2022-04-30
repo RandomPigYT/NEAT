@@ -76,19 +76,8 @@ uint32_t findNode(Genome* genome, uint32_t index){
 
 void removeCon(Genome* genome, uint32_t innovation){
 
-    uint32_t index;
-    for(uint32_t i = 0; i < genome->numberOfConnections; i++){
-        if(genome->connections[i].innovation == innovation) index = i;
-    }
-
-    for(uint32_t i = index + 1; i < genome->numberOfConnections; i++){
-        genome->connections[i - 1] = genome->connections[i];
-    }
-
-    genome->numberOfConnections--;
-    genome->remainingConMem++;
-
     
+
 }
 
 
@@ -144,7 +133,7 @@ BOOL addConnection(Genome* genome){
 
 void removeNodeMut(Genome* genome){
 
-    //if(genome->numberOfNodes == numInputs + numOutputs) return;
+    if(genome->numberOfNodes == numInputs + numOutputs) return;
 
     uint32_t nodeIndex = (int)(((float)(rand()) / RAND_MAX) * ((genome->numberOfNodes - 1) - (numInputs + numOutputs)) + (numInputs + numOutputs));
 

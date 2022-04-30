@@ -7,16 +7,7 @@
 typedef char int_8; 
 
 
-void updateConCoords(){
 
-    for(uint32_t i = 0; i < currentGenome->numberOfConnections; i++){
-
-        currentGenome->connections[i].pos[0] = getNode(currentGenome->connections[i].from, currentGenome).pos[0];
-        currentGenome->connections[i].pos[1] = getNode(currentGenome->connections[i].from, currentGenome).pos[1];
-        currentGenome->connections[i].pos[2] = getNode(currentGenome->connections[i].to, currentGenome).pos[0];
-        currentGenome->connections[i].pos[3] = getNode(currentGenome->connections[i].to, currentGenome).pos[1];
-    }
-}
 void transformNode(int32_t x, int32_t y){
 
     if(grabbedNode != NULL){
@@ -50,5 +41,5 @@ void moveNodeWithMouse(int32_t x, int32_t y){
 
     transformNode(x, y);
     
-    updateConCoords();
+
 }

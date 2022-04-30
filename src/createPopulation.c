@@ -4,8 +4,6 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#define HEIGHT_START_COORDS 63
-#define HEIGHT_END_COORDS 442
 
 
 Node addNode(uint32_t index, uint8_t type, Genome* genome){

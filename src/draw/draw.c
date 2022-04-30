@@ -14,6 +14,22 @@ typedef struct data_t
 } Data;
 
 
+void updateCoords(){
+
+    // Sets the coordinates of the nodes according to their layer
+
+
+    // Sets coords of the connections
+    for(uint32_t i = 0; i < currentGenome->numberOfConnections; i++){
+
+        currentGenome->connections[i].pos[0] = getNode(currentGenome->connections[i].from, currentGenome).pos[0];
+        currentGenome->connections[i].pos[1] = getNode(currentGenome->connections[i].from, currentGenome).pos[1];
+        currentGenome->connections[i].pos[2] = getNode(currentGenome->connections[i].to, currentGenome).pos[0];
+        currentGenome->connections[i].pos[3] = getNode(currentGenome->connections[i].to, currentGenome).pos[1];
+    }
+
+}
+
 
 void createWindow(void* arg){
   
@@ -56,6 +72,7 @@ void createWindow(void* arg){
     
     // TODO: Add function to choose fittest genome
 
+    updateCoords();
 
     int32_t x, y;
 

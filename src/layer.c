@@ -4,8 +4,7 @@
 #include <stdlib.h>
 
 
-#define WIDTH_START_COORD 78
-#define WIDTH_END_COORD 550
+
 
 
 
