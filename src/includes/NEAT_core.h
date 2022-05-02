@@ -65,7 +65,8 @@ typedef struct connection_t{
     uint8_t type;
 
     float pos[4];
-
+    
+    BOOL deleted;
 } Connection;
 
 
@@ -184,5 +185,6 @@ void removeCon(Genome* genome, uint32_t innovation);
 void removeNodeMut(Genome* genome);
 
 Node getNode(uint32_t index, Genome* genome);
+void crossover(Genome* parent1, Genome* parent2);
 #endif
 

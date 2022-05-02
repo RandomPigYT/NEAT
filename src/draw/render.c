@@ -69,14 +69,14 @@ void drawCon(Connection* con){
 
 
 
-  if(con->type == FEED_FORWARD && con->isEnabled) {
+  if(con->type == FEED_FORWARD && con->isEnabled && !con->deleted) {
 
     if(con->weight < 0.0f) thickLineRGBA(renderer, con->pos[0], con->pos[1], con->pos[2], con->pos[3], 3, 186, 43, 43, 255);
     if(con->weight > 0.0f) thickLineRGBA(renderer, con->pos[0], con->pos[1], con->pos[2], con->pos[3], 3, 41, 214, 87, 255);
 
   }
 
-  else if(con->type == RECURRENT && con->isEnabled) thickLineRGBA(renderer, con->pos[0], con->pos[1], con->pos[2], con->pos[3], 3, 0, 0, 0, 255);
+  else if(con->type == RECURRENT && con->isEnabled && !con->deleted) thickLineRGBA(renderer, con->pos[0], con->pos[1], con->pos[2], con->pos[3], 3, 0, 0, 0, 255);
 
  
   

@@ -114,7 +114,8 @@ Connection createConnection(uint32_t to, uint32_t from, uint8_t type){
 
     
     setInnovation(&con);
-
+    
+    con.deleted = false;
     
     return con;
 }
