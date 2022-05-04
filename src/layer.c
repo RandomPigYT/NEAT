@@ -39,15 +39,7 @@ void verifyRecurrentCons(Genome* genome){
 uint32_t recursiveSort(Node node, uint32_t currentLayer, Genome* genome){
     if(node.type == INPUT || node.type == BIAS) return currentLayer;
 
-    // {
-    //     BOOL tempBool = false;
 
-    //     for(uint32_t i = 0; i < node.numInNodes; i++){
-    //         if(findCon(node.index, node.inNodes[i], genome).type == FEED_FORWARD) tempBool = true;
-    //     }
-
-    //     if(!tempBool) currentLayer--;
-    // }
 
     currentLayer++;
     uint32_t temp = currentLayer;
@@ -57,7 +49,7 @@ uint32_t recursiveSort(Node node, uint32_t currentLayer, Genome* genome){
         
         Connection con = findCon(node.index, node.inNodes[i], genome);
 
-        if(con.type == RECURRENT || con.isEnabled == false){;}
+        if(con.type == RECURRENT || con.isEnabled == false || con.deleted){;}
 
         else{ 
             uint32_t tempIndex = recursiveSort(getNode(node.inNodes[i], genome), temp, genome);

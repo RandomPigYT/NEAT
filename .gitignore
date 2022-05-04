@@ -53,6 +53,5 @@ dkms.conf
 
 # Misc
 .vscode/
-src/main.c
 test/
 Hi.png

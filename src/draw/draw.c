@@ -6,6 +6,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
+BOOL hasQuit;
 
 typedef struct data_t
 {
