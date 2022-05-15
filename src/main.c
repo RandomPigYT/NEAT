@@ -13,7 +13,7 @@ int main(int argc, char** argv){
 
     createPopulation(3, 4, 10);
 
-    //pthread_create(&id, NULL, draw, population);
+    pthread_create(&id, NULL, draw, population);
 
     mutateConnection(population);
 
@@ -67,8 +67,11 @@ int main(int argc, char** argv){
     //     sleep(1);
     // }
 
-    population[0].fitness = 1.0f;
-    population[1].fitness = 0.5f;
+    population[0].fitness = 1.5f;
+    population[1].fitness = 1.5f;
+
+    quickSort(population, INNOVATION);
+
     crossover(&population[0], &population[1]);
-  //pthread_join(id, NULL);
+	pthread_join(id, NULL);
 }

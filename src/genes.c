@@ -110,7 +110,7 @@ Connection createConnection(uint32_t to, uint32_t from, uint8_t type){
     float max = 1.0f;
     float min = -1.0f;
 
-    con.weight = ((float) rand() / RAND_MAX) * (max - min) + min;
+    con.weight = (float)((float) rand() / RAND_MAX) * (max - min) + min;
 
     
     setInnovation(&con);

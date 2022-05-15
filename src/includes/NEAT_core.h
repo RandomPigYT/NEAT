@@ -132,29 +132,36 @@ enum connection_types{
 };
 
 
+enum sortType{
+
+    FITNESS,
+    INNOVATION
+};
+
 //=========================================================================================================================
 
 // Global variables
 
 //=========================================================================================================================
 
-Genome* population;
-uint32_t popSize;
+extern Genome* population;
+extern uint32_t popSize;
 
 
 
-uint32_t globalInnovationNumber;
+extern uint32_t globalInnovationNumber;
 
-Memory* geneMemory;
-uint32_t numGenesInMemory;
-uint32_t remainingMemory;   // To keep track of the amount of malloc'd memory remaining 
-
-
+extern Memory* geneMemory;
+extern uint32_t numGenesInMemory;
+extern uint32_t remainingMemory;   // To keep track of the amount of malloc'd memory remaining 
 
 
-uint32_t numInputs;
-uint32_t numOutputs;
 
+
+extern uint32_t numInputs;
+extern uint32_t numOutputs;
+
+extern BOOL isPaused;
 
 
 //=========================================================================================================================
@@ -165,7 +172,6 @@ uint32_t numOutputs;
 
 void mutate(Genome* genome);
 
-BOOL isPaused;
 
 
 Node createNode(uint32_t index);
@@ -185,6 +191,8 @@ void removeCon(Genome* genome, uint32_t innovation);
 void removeNodeMut(Genome* genome);
 
 Node getNode(uint32_t index, Genome* genome);
-void crossover(Genome* parent1, Genome* parent2);
+Genome crossover(Genome* parent1, Genome* parent2);
+
+void quickSort(Genome* genome, uint32_t type);
 #endif
 

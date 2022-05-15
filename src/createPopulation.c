@@ -88,7 +88,9 @@ Genome createGenome(){
         genome.nodes[i].pos[1] = d * outOffset + HEIGHT_START_COORDS;
         d++;
     }
-
+	
+	setCoords(&genome);
+	
     return genome;
 
     

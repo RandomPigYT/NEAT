@@ -98,7 +98,13 @@ BOOL addConnection(Genome* genome){
     
 
     for(int i = 0; i < genome->numberOfConnections; i++){
-        if(con.innovation == genome->connections[i].innovation) return false; 
+        if(con.innovation == genome->connections[i].innovation) {
+			
+			if(genome->connections[i].deleted) genome->connections[i].deleted = false; return true;
+
+			return false;
+		}
+		
     }
     
     float recurrentProb = ((float) rand() / RAND_MAX) * (1.0f - 0.0f) + 0.0f;
