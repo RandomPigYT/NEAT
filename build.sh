@@ -14,11 +14,6 @@ do
 
 done 
 
-# for i in $srcs 
-# do 
-
-
-# done
 
 gcc ${objectFiles} -o bin/NEAT ${libs}
 
