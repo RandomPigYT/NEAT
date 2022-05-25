@@ -23,13 +23,15 @@ int32_t sort(Genome* genome, int32_t start, int32_t end){
     int32_t j = start - 1;
     int32_t pivot = end;
 
-    for(uint32_t i = 0; i < end; i++){
+    for(uint32_t i = start; i < end; i++){
 
         if(genome->connections[i].innovation > genome->connections[pivot].innovation) continue;
 
         j++;
 
         swap(j, i, genome);
+
+	//	printf("j = %d\n", j);
         
     }
 

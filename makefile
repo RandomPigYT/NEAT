@@ -1,39 +1,45 @@
-CC = gcc
-FLAGS = -g -Wall -Wextra -std=c17 -O2
+CC:=gcc
+LD:=gcc
 
-OBJECT_FILES = $(wildcard obj/*.o)# obj/createPopulation.o obj/main.o obj/genes.o obj/layer.o obj/mutate.o obj/draw.o obj/render.o obj/io.o obj/circle.o obj/crossover.o
+CFLAGS:=-g -Wall -Wextra -std=c17 -O2
+LDFLAGS:= -lpthread -lSDL2main -lSDL2 -lSDL2_image -lSDL2_gfx -lm
 
-COMMANDS =compile link
+OBJ:=obj
+SRC:=src
+BIN:=bin
 
-LIBS = -lpthread -lSDL2main -lSDL2 -lSDL2_image -lSDL2_gfx -lm
+DIRS:=$(shell find src/ -type d)
+BUILD_DIRS:=$(patsubst $(SRC)/%, $(OBJ)/%, $(DIRS))
 
 
-all: $(COMMANDS)
+SRCS:=$(shell find src -name *.c)
+OBJS:=$(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
-compile: 
-	$(CC) $(FLAGS) -c src/createPopulation.c
-	$(CC) $(FLAGS) -c src/main.c
-	$(CC) $(FLAGS) -c src/mutate.c
-	$(CC) $(FLAGS) -c src/genes.c
-	$(CC) $(FLAGS) -c src/layer.c
-	$(CC) $(FLAGS) -c src/draw/draw.c
-	$(CC) $(FLAGS) -c src/draw/render.c
-	$(CC) $(FLAGS) -c src/draw/io.c
-	$(CC) $(FLAGS) -c src/draw/circle.c
-	$(CC) $(FLAGS) -c src/crossover.c
-	$(CC) $(FLAGS) -c src/util/sort.c
-	$(CC) $(FLAGS) -c src/util/decls.c
-	mv *.o obj
+TARGET:= $(BIN)/NEAT
 
-link: $(OBJECT_FILES)
-	gcc $(FLAGS) $(OBJECT_FILES) -o bin/NEAT.out $(LIBS)
+
+
+.PHONY: all clean dirs run
+
+all:$(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@ $(LDFLAGS)
+
+$(OBJ)/%.o: $(SRC)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+
+
+dirs:
+		for i in $(BUILD_DIRS) ; do \
+			mkdir $$i ; \
+		done
+		mkdir $(BIN) 
 
 clean:
-	rm obj/*
-	rm bin/*
-run:
-	clear
-	./bin/NEAT
+	rm -rf bin
+	rm -rf obj
 
-debug:
-	gdb bin/NEAT.out
+run:
+	./$(TARGET)

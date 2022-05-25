@@ -52,13 +52,13 @@ typedef struct texture_t{
     Src src;
 }Texture;
 
-Genome* currentGenome;
+extern Genome* currentGenome;
 
 
-SDL_Window *window;
-SDL_Renderer* renderer;
+extern SDL_Window *window;
+extern SDL_Renderer* renderer;
 
-Node* grabbedNode;
+extern Node* grabbedNode;
 
 void render(SDL_Texture* texture, SDL_Rect dst);
 void display();
