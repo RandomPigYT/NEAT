@@ -5,6 +5,10 @@
 #include <time.h>
 #include <pthread.h>
 #include <unistd.h>
+
+
+
+
 int main(int argc, char** argv){
     srand(time(NULL));
 
@@ -68,10 +72,20 @@ int main(int argc, char** argv){
     // }
 
     population[0].fitness = 1.5f;
-    population[1].fitness = 1.5f;
+    population[1].fitness = 2.5f;
 
-    quickSort(population, INNOVATION);
+	
+	for(int i = 0; i < 10; i++){
 
-    crossover(&population[0], &population[1]);
+    float prob = ((float)(rand())/ RAND_MAX) * (1.0f);
+    if(prob < 0.3f) mutateNode(&population[1]);
+    
+    else mutateConnection(&population[1]);
+    //sleep(1);
+   }
+
+	usleep(500000);	
+
+   *population =  crossover(population, &population[1]);
 	pthread_join(id, NULL);
 }
