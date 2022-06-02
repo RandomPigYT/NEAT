@@ -1,0 +1,210 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/randompigyt/NEAT/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+$(OBJ)/%.o	makefile	/^$(OBJ)\/%.o: $(SRC)\/%.c$/;"	t
+$(TARGET)	makefile	/^$(TARGET): $(OBJS)$/;"	t
+BIAS	src/includes/NEAT_core.h	/^    BIAS$/;"	e	enum:node_types
+BIN	makefile	/^BIN:=bin$/;"	m
+BOOL	src/includes/NEAT_core.h	/^typedef uint8_t BOOL;$/;"	t	typeref:typename:uint8_t
+BUILD_DIRS	makefile	/^BUILD_DIRS:=$(patsubst $(SRC)\/%, $(OBJ)\/%, $(DIRS))$/;"	m
+CC	makefile	/^CC:=gcc$/;"	m
+CFLAGS	makefile	/^CFLAGS:=-g -Wall -Wextra -std=c17 -O2$/;"	m
+Connection	src/includes/NEAT.h	/^typedef struct connection_t Connection;$/;"	t	typeref:struct:connection_t
+Connection	src/includes/NEAT_core.h	/^} Connection;$/;"	t	typeref:struct:connection_t
+DIRS	makefile	/^DIRS:=$(shell find src\/ -type d)$/;"	m
+DRAW_HEADER_H	src/draw/drawHeaders/drawHeader.h	/^#define DRAW_HEADER_H$/;"	d
+Data	src/draw/draw.c	/^} Data;$/;"	t	typeref:struct:data_t	file:
+DirectoryOfThisScript	conf/.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+Dst	src/draw/drawHeaders/drawHeader.h	/^} Dst;$/;"	t	typeref:struct:dst_t
+EQUAL	src/crossover.c	/^	EQUAL$/;"	e	enum:__anona640d6530103	file:
+FEED_FORWARD	src/includes/NEAT_core.h	/^    FEED_FORWARD,$/;"	e	enum:connection_types
+FITNESS	src/includes/NEAT_core.h	/^    FITNESS,$/;"	e	enum:sortType
+GREATER	src/crossover.c	/^	GREATER,$/;"	e	enum:__anona640d6530103	file:
+Genome	src/includes/NEAT.h	/^typedef struct genome_t Genome;$/;"	t	typeref:struct:genome_t
+Genome	src/includes/NEAT_core.h	/^} Genome;$/;"	t	typeref:struct:genome_t
+GetCompilationInfoForFile	conf/.ycm_extra_conf.py	/^def GetCompilationInfoForFile( filename ):$/;"	f
+HEIGHT_END_COORDS	src/includes/NEAT_core.h	/^#define HEIGHT_END_COORDS /;"	d
+HEIGHT_START_COORDS	src/includes/NEAT_core.h	/^#define HEIGHT_START_COORDS /;"	d
+HIDDEN	src/includes/NEAT_core.h	/^    HIDDEN,$/;"	e	enum:node_types
+INNOVATION	src/includes/NEAT_core.h	/^    INNOVATION$/;"	e	enum:sortType
+INPUT	src/includes/NEAT_core.h	/^    INPUT,$/;"	e	enum:node_types
+IsHeaderFile	conf/.ycm_extra_conf.py	/^def IsHeaderFile( filename ):$/;"	f
+LD	makefile	/^LD:=gcc$/;"	m
+LDFLAGS	makefile	/^LDFLAGS:= -lpthread -lSDL2main -lSDL2 -lSDL2_image -lSDL2_gfx -lm$/;"	m
+LESSER	src/crossover.c	/^	LESSER,$/;"	e	enum:__anona640d6530103	file:
+LINE_SCALE_X	src/draw/render.c	/^#define LINE_SCALE_X /;"	d	file:
+LINE_SCALE_Y	src/draw/render.c	/^#define LINE_SCALE_Y /;"	d	file:
+Layer	src/includes/NEAT_core.h	/^} Layer;$/;"	t	typeref:struct:layer_t
+Memory	src/includes/NEAT_core.h	/^} Memory;$/;"	t	typeref:struct:memory_t
+NEAT	README.md	/^# NEAT/;"	c
+NEAT_CORE_H	src/includes/NEAT_core.h	/^#define NEAT_CORE_H$/;"	d
+NEAT_H	src/includes/NEAT.h	/^#define NEAT_H$/;"	d
+NODE_RADIUS	src/draw/render.c	/^#define NODE_RADIUS /;"	d	file:
+Node	src/includes/NEAT.h	/^typedef struct node_t Node;$/;"	t	typeref:struct:node_t
+Node	src/includes/NEAT_core.h	/^} Node;$/;"	t	typeref:struct:node_t
+NodeEntity	src/draw/drawHeaders/drawHeader.h	/^} NodeEntity;$/;"	t	typeref:struct:entity_t
+OBJ	makefile	/^OBJ:=obj$/;"	m
+OBJS	makefile	/^OBJS:=$(patsubst $(SRC)\/%.c, $(OBJ)\/%.o, $(SRCS))$/;"	m
+OUTPUT	src/includes/NEAT_core.h	/^    OUTPUT,$/;"	e	enum:node_types
+RECURRENT	src/includes/NEAT_core.h	/^    RECURRENT$/;"	e	enum:connection_types
+SDL_RenderDrawCircle	src/draw/circle.c	/^int SDL_RenderDrawCircle(SDL_Renderer * renderer, float x, float y, float radius, Uint8 color[4]/;"	f	typeref:typename:int
+SDL_RenderFillCircle	src/draw/circle.c	/^SDL_RenderFillCircle(SDL_Renderer * renderer, float x, float y, float radius, Uint8 color[4])$/;"	f	typeref:typename:int
+SOURCE_EXTENSIONS	conf/.ycm_extra_conf.py	/^SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]$/;"	v
+SRC	makefile	/^SRC:=src$/;"	m
+SRCS	makefile	/^SRCS:=$(shell find src -name *.c)$/;"	m
+Settings	conf/.ycm_extra_conf.py	/^def Settings( **kwargs ):$/;"	f
+Src	src/draw/drawHeaders/drawHeader.h	/^} Src;$/;"	t	typeref:struct:src_t
+TARGET	makefile	/^TARGET:= $(BIN)\/NEAT$/;"	m
+Texture	src/draw/drawHeaders/drawHeader.h	/^}Texture;$/;"	t	typeref:struct:texture_t
+WIDTH_END_COORD	src/includes/NEAT_core.h	/^#define WIDTH_END_COORD /;"	d
+WIDTH_START_COORD	src/includes/NEAT_core.h	/^#define WIDTH_START_COORD /;"	d
+WindowData	src/draw/drawHeaders/drawHeader.h	/^} WindowData;$/;"	t	typeref:struct:__anon830e05bf0108
+__anon830e05bf0108	src/draw/drawHeaders/drawHeader.h	/^typedef struct {$/;"	s
+__anona640d6530103	src/crossover.c	/^enum {$/;"	g	file:
+a	test/test.cpp	/^int a, int b;$/;"	m	class:hello	typeref:typename:int	file:
+activation	src/includes/NEAT_core.h	/^    float activation;$/;"	m	struct:node_t	typeref:typename:float
+addConnection	src/mutate.c	/^BOOL addConnection(Genome* genome){$/;"	f	typeref:typename:BOOL
+addNode	src/createPopulation.c	/^Node addNode(uint32_t index, uint8_t type, Genome* genome){$/;"	f	typeref:typename:Node
+addNodeMut	src/mutate.c	/^void addNodeMut(Genome* genome){$/;"	f	typeref:typename:void
+adjustedFitness	src/includes/NEAT_core.h	/^    float adjustedFitness;$/;"	m	struct:genome_t	typeref:typename:float
+all	makefile	/^all:$(TARGET)$/;"	t
+b	test/test.cpp	/^int a, int b;$/;"	m	class:hello	typeref:typename:int int	file:
+buildGenome	src/crossover.c	/^void buildGenome(Genome* genome){$/;"	f	typeref:typename:void
+clean	makefile	/^clean:$/;"	t
+cloneGenome	src/crossover.c	/^Genome cloneGenome(Genome* genome){$/;"	f	typeref:typename:Genome
+cmpFitness	src/crossover.c	/^uint8_t cmpFitness(Genome* parent1, Genome* parent2){$/;"	f	typeref:typename:uint8_t
+compilation_database_folder	conf/.ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+connectionMutationProb	src/mutate.c	/^float connectionMutationProb = 0.8f;$/;"	v	typeref:typename:float
+connection_t	src/includes/NEAT_core.h	/^typedef struct connection_t{$/;"	s
+connection_types	src/includes/NEAT_core.h	/^enum connection_types{$/;"	g
+connections	src/includes/NEAT_core.h	/^    Connection* connections;$/;"	m	struct:genome_t	typeref:typename:Connection *
+createConnection	src/genes.c	/^Connection createConnection(uint32_t to, uint32_t from, uint8_t type){$/;"	f	typeref:typename:Connection
+createGenome	src/createPopulation.c	/^Genome createGenome(){$/;"	f	typeref:typename:Genome
+createNode	src/genes.c	/^Node createNode(uint32_t index){$/;"	f	typeref:typename:Node
+createPopulation	src/createPopulation.c	/^void createPopulation(uint32_t numberOfInputs, uint32_t numberOfOutputs, uint32_t populationSize/;"	f	typeref:typename:void
+createWindow	src/draw/draw.c	/^void createWindow(void* arg){$/;"	f	typeref:typename:void
+crossover	src/crossover.c	/^Genome crossover(Genome* parent1, Genome* parent2){$/;"	f	typeref:typename:Genome
+currentGenome	src/util/decls.c	/^Genome* currentGenome;$/;"	v	typeref:typename:Genome *
+data_t	src/draw/draw.c	/^typedef struct data_t$/;"	s	file:
+database	conf/.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
+deleted	src/includes/NEAT_core.h	/^    BOOL deleted;$/;"	m	struct:connection_t	typeref:typename:BOOL
+dirs	makefile	/^dirs:$/;"	t
+display	src/draw/render.c	/^void display(){$/;"	f	typeref:typename:void
+draw	src/draw/draw.c	/^pthread_t draw(void* args){$/;"	f	typeref:typename:pthread_t
+drawCon	src/draw/render.c	/^void drawCon(Connection* con){$/;"	f	typeref:typename:void
+drawNode	src/draw/render.c	/^void drawNode(Node* node){$/;"	f	typeref:typename:void
+dst	src/draw/drawHeaders/drawHeader.h	/^    Dst dst;$/;"	m	struct:entity_t	typeref:typename:Dst
+dst_t	src/draw/drawHeaders/drawHeader.h	/^typedef struct dst_t{$/;"	s
+entity_t	src/draw/drawHeaders/drawHeader.h	/^typedef struct entity_t{$/;"	s
+findCon	src/layer.c	/^Connection findCon(uint32_t to, uint32_t from, Genome* genome){$/;"	f	typeref:typename:Connection
+findMaxIndex	src/mutate.c	/^uint32_t findMaxIndex(Genome* genome){$/;"	f	typeref:typename:uint32_t
+findMaxLayer	src/layer.c	/^uint32_t findMaxLayer(Genome* genome){$/;"	f	typeref:typename:uint32_t
+findNode	src/mutate.c	/^uint32_t findNode(Genome* genome, uint32_t index){$/;"	f	typeref:typename:uint32_t
+findNumCons	src/crossover.c	/^uint32_t findNumCons(Genome* genome){$/;"	f	typeref:typename:uint32_t
+fitness	src/includes/NEAT_core.h	/^    float fitness;$/;"	m	struct:genome_t	typeref:typename:float
+flags	conf/.ycm_extra_conf.py	/^flags = [$/;"	v
+flags	src/draw/drawHeaders/drawHeader.h	/^    Uint32 flags;$/;"	m	struct:__anon830e05bf0108	typeref:typename:Uint32
+from	src/includes/NEAT_core.h	/^    uint32_t from;    $/;"	m	struct:connection_t	typeref:typename:uint32_t
+geneMemory	src/util/decls.c	/^Memory* geneMemory;$/;"	v	typeref:typename:Memory *
+genome	src/draw/draw.c	/^  Genome* genome;$/;"	m	struct:data_t	typeref:typename:Genome *	file:
+genome_t	src/includes/NEAT_core.h	/^typedef struct genome_t{$/;"	s
+getCon	src/crossover.c	/^int32_t getCon(Genome* genome, uint32_t innovation){$/;"	f	typeref:typename:int32_t
+getNode	src/layer.c	/^Node getNode(uint32_t index, Genome* genome){$/;"	f	typeref:typename:Node
+globalInnovationNumber	src/util/decls.c	/^uint32_t globalInnovationNumber;$/;"	v	typeref:typename:uint32_t
+grabbedNode	src/util/decls.c	/^Node* grabbedNode;$/;"	v	typeref:typename:Node *
+h	src/draw/drawHeaders/drawHeader.h	/^    int h;$/;"	m	struct:__anon830e05bf0108	typeref:typename:int
+h	src/draw/drawHeaders/drawHeader.h	/^    int h;$/;"	m	struct:dst_t	typeref:typename:int
+h	src/draw/drawHeaders/drawHeader.h	/^    int h;$/;"	m	struct:src_t	typeref:typename:int
+hasQuit	src/draw/draw.c	/^BOOL hasQuit;$/;"	v	typeref:typename:BOOL
+hasSetSeed	src/mutate.c	/^BOOL hasSetSeed = false;$/;"	v	typeref:typename:BOOL
+hello	test/test.cpp	/^	hello(int a, int b){$/;"	f	class:hello	file:
+hello	test/test.cpp	/^class hello{$/;"	c	file:
+in	src/includes/NEAT_core.h	/^    uint32_t in;$/;"	m	struct:memory_t	typeref:typename:uint32_t
+inNodes	src/includes/NEAT_core.h	/^    uint32_t* inNodes;$/;"	m	struct:node_t	typeref:typename:uint32_t *
+index	src/includes/NEAT_core.h	/^    uint32_t index;$/;"	m	struct:node_t	typeref:typename:uint32_t
+initConMem	src/mutate.c	/^void initConMem(Genome* genome){$/;"	f	typeref:typename:void
+initInNodeMem	src/mutate.c	/^void initInNodeMem(Node* node){$/;"	f	typeref:typename:void
+initNodeMem	src/mutate.c	/^void initNodeMem(Genome* genome){$/;"	f	typeref:typename:void
+innovation	src/includes/NEAT_core.h	/^    uint32_t innovation;$/;"	m	struct:connection_t	typeref:typename:uint32_t
+innovation	src/includes/NEAT_core.h	/^    uint32_t innovation;$/;"	m	struct:memory_t	typeref:typename:uint32_t
+int_8	src/draw/io.c	/^typedef char int_8; $/;"	t	typeref:typename:char	file:
+isEnabled	src/includes/NEAT_core.h	/^    BOOL isEnabled;$/;"	m	struct:connection_t	typeref:typename:BOOL
+isPaused	src/util/decls.c	/^BOOL isPaused;$/;"	v	typeref:typename:BOOL
+layer	src/includes/NEAT_core.h	/^    uint32_t layer;$/;"	m	struct:node_t	typeref:typename:uint32_t
+layer_t	src/includes/NEAT_core.h	/^typedef struct layer_t{$/;"	s
+layers	src/includes/NEAT_core.h	/^    Layer* layers;$/;"	m	struct:genome_t	typeref:typename:Layer *
+loadTexture	src/draw/render.c	/^SDL_Texture* loadTexture(const char* file){$/;"	f	typeref:typename:SDL_Texture *
+main	src/main.c	/^int main(int argc, char** argv){$/;"	f	typeref:typename:int
+main	test/test.cpp	/^int main(void){$/;"	f	typeref:typename:int
+memory_t	src/includes/NEAT_core.h	/^typedef struct memory_t{$/;"	s
+moveNodeWithMouse	src/draw/io.c	/^void moveNodeWithMouse(int32_t x, int32_t y){$/;"	f	typeref:typename:void
+mutate	src/mutate.c	/^void mutate(Genome* genome){$/;"	f	typeref:typename:void
+mutateConnection	src/mutate.c	/^void mutateConnection(Genome* genome){$/;"	f	typeref:typename:void
+mutateNode	src/mutate.c	/^void mutateNode(Genome* genome){$/;"	f	typeref:typename:void
+node	src/draw/drawHeaders/drawHeader.h	/^    Node* node;$/;"	m	struct:entity_t	typeref:typename:Node *
+nodeMutationProbability	src/mutate.c	/^float nodeMutationProbability = 0.2f;$/;"	v	typeref:typename:float
+node_t	src/includes/NEAT_core.h	/^typedef struct node_t{$/;"	s
+node_types	src/includes/NEAT_core.h	/^enum node_types{$/;"	g
+nodes	src/includes/NEAT_core.h	/^    Node* nodes;$/;"	m	struct:genome_t	typeref:typename:Node *
+nodes	src/includes/NEAT_core.h	/^    Node** nodes;$/;"	m	struct:layer_t	typeref:typename:Node **
+numGenesInMemory	src/util/decls.c	/^uint32_t numGenesInMemory;$/;"	v	typeref:typename:uint32_t
+numInNodes	src/includes/NEAT_core.h	/^    uint32_t numInNodes;$/;"	m	struct:node_t	typeref:typename:uint32_t
+numInputs	src/util/decls.c	/^uint32_t numInputs;$/;"	v	typeref:typename:uint32_t
+numOutputs	src/util/decls.c	/^uint32_t numOutputs;$/;"	v	typeref:typename:uint32_t
+numberOfConnections	src/includes/NEAT_core.h	/^    uint32_t numberOfConnections;$/;"	m	struct:genome_t	typeref:typename:uint32_t
+numberOfLayers	src/includes/NEAT_core.h	/^    uint32_t numberOfLayers;$/;"	m	struct:genome_t	typeref:typename:uint32_t
+numberOfNodes	src/includes/NEAT_core.h	/^    uint32_t numberOfNodes; $/;"	m	struct:layer_t	typeref:typename:uint32_t
+numberOfNodes	src/includes/NEAT_core.h	/^    uint32_t numberOfNodes;$/;"	m	struct:genome_t	typeref:typename:uint32_t
+out	src/includes/NEAT_core.h	/^    uint32_t out;$/;"	m	struct:memory_t	typeref:typename:uint32_t
+popSize	src/util/decls.c	/^uint32_t popSize;$/;"	v	typeref:typename:uint32_t
+population	src/util/decls.c	/^Genome* population;$/;"	v	typeref:typename:Genome *
+pos	src/includes/NEAT_core.h	/^    float pos[2];$/;"	m	struct:node_t	typeref:typename:float[2]
+pos	src/includes/NEAT_core.h	/^    float pos[4];$/;"	m	struct:connection_t	typeref:typename:float[4]
+quickSort	src/util/sort.c	/^void quickSort(Genome* genome, uint32_t type){$/;"	f	typeref:typename:void
+recursiveSort	src/layer.c	/^uint32_t recursiveSort(Node node, uint32_t currentLayer, Genome* genome){$/;"	f	typeref:typename:uint32_t
+remainingConMem	src/includes/NEAT_core.h	/^    uint32_t remainingConMem;$/;"	m	struct:genome_t	typeref:typename:uint32_t
+remainingInNodeMem	src/includes/NEAT_core.h	/^    uint32_t remainingInNodeMem;    $/;"	m	struct:node_t	typeref:typename:uint32_t
+remainingMemory	src/util/decls.c	/^uint32_t remainingMemory;   $/;"	v	typeref:typename:uint32_t
+remainingNodeMem	src/includes/NEAT_core.h	/^    uint32_t remainingNodeMem;$/;"	m	struct:genome_t	typeref:typename:uint32_t
+removeCon	src/mutate.c	/^void removeCon(Genome* genome, uint32_t innovation){$/;"	f	typeref:typename:void
+removeDeletedCons	src/crossover.c	/^void removeDeletedCons(Genome* genome){$/;"	f	typeref:typename:void
+removeNodeMut	src/mutate.c	/^void removeNodeMut(Genome* genome){$/;"	f	typeref:typename:void
+render	src/draw/render.c	/^void render(SDL_Texture* texture, SDL_Rect dst){$/;"	f	typeref:typename:void
+renderer	src/util/decls.c	/^SDL_Renderer* renderer;$/;"	v	typeref:typename:SDL_Renderer *
+run	makefile	/^run:$/;"	t
+setCoords	src/layer.c	/^void setCoords(Genome* genome){$/;"	f	typeref:typename:void
+setInnovation	src/genes.c	/^void setInnovation(Connection* con){$/;"	f	typeref:typename:void
+sort	src/util/sort.c	/^int32_t sort(Genome* genome, int32_t start, int32_t end){$/;"	f	typeref:typename:int32_t
+sortToLayers	src/layer.c	/^void sortToLayers(Genome* genome){$/;"	f	typeref:typename:void
+sortType	src/includes/NEAT_core.h	/^enum sortType{$/;"	g
+src	src/draw/drawHeaders/drawHeader.h	/^    Src src;$/;"	m	struct:texture_t	typeref:typename:Src
+src_t	src/draw/drawHeaders/drawHeader.h	/^typedef struct src_t{$/;"	s
+swap	src/util/sort.c	/^void swap(uint32_t a, uint32_t b, Genome* genome){$/;"	f	typeref:typename:void
+texture_t	src/draw/drawHeaders/drawHeader.h	/^typedef struct texture_t{$/;"	s
+title	src/draw/drawHeaders/drawHeader.h	/^    const char* title;$/;"	m	struct:__anon830e05bf0108	typeref:typename:const char *
+to	src/includes/NEAT_core.h	/^    uint32_t to;   $/;"	m	struct:connection_t	typeref:typename:uint32_t
+transformNode	src/draw/io.c	/^void transformNode(int32_t x, int32_t y){$/;"	f	typeref:typename:void
+type	src/includes/NEAT_core.h	/^    uint8_t type;$/;"	m	struct:connection_t	typeref:typename:uint8_t
+type	src/includes/NEAT_core.h	/^    uint8_t type;$/;"	m	struct:node_t	typeref:typename:uint8_t
+updateCoords	src/draw/draw.c	/^void updateCoords(){$/;"	f	typeref:typename:void
+verifyRecurrentCons	src/layer.c	/^void verifyRecurrentCons(Genome* genome){$/;"	f	typeref:typename:void
+w	src/draw/draw.c	/^  WindowData w;$/;"	m	struct:data_t	typeref:typename:WindowData	file:
+w	src/draw/drawHeaders/drawHeader.h	/^    int w;$/;"	m	struct:__anon830e05bf0108	typeref:typename:int
+w	src/draw/drawHeaders/drawHeader.h	/^    int w;$/;"	m	struct:dst_t	typeref:typename:int
+w	src/draw/drawHeaders/drawHeader.h	/^    int w;$/;"	m	struct:src_t	typeref:typename:int
+weight	src/includes/NEAT_core.h	/^    float weight;$/;"	m	struct:connection_t	typeref:typename:float
+window	src/util/decls.c	/^SDL_Window *window;$/;"	v	typeref:typename:SDL_Window *
+x	src/draw/drawHeaders/drawHeader.h	/^    int x;$/;"	m	struct:__anon830e05bf0108	typeref:typename:int
+x	src/draw/drawHeaders/drawHeader.h	/^    int x;$/;"	m	struct:dst_t	typeref:typename:int
+x	src/draw/drawHeaders/drawHeader.h	/^    int x;$/;"	m	struct:src_t	typeref:typename:int
+y	src/draw/drawHeaders/drawHeader.h	/^    int y;$/;"	m	struct:__anon830e05bf0108	typeref:typename:int
+y	src/draw/drawHeaders/drawHeader.h	/^    int y;$/;"	m	struct:dst_t	typeref:typename:int
+y	src/draw/drawHeaders/drawHeader.h	/^    int y;$/;"	m	struct:src_t	typeref:typename:int
