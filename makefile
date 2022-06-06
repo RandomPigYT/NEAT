@@ -43,3 +43,6 @@ clean:
 
 run:
 	./$(TARGET)
+
+debug:
+	gdb $(TARGET)

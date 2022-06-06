@@ -196,5 +196,10 @@ Node getNode(uint32_t index, Genome* genome);
 Genome crossover(Genome* parent1, Genome* parent2);
 
 void quickSort(Genome* genome, uint32_t type);
+
+
+void initConMem(Genome* genome);
+void initNodeMem(Genome* genome);
+void initInNodeMem(Node* node);
 #endif
 

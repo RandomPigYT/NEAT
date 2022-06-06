@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+
+
 enum {
 	GREATER,
 	LESSER,
@@ -85,7 +87,9 @@ void removeDeletedCons(Genome* genome){
 		}
 	}
 
-	free(genome->connections);
+	if(genome->numberOfConnections > 0){	
+		free(genome->connections);
+	}
 	genome->connections = buf;
 }
 
@@ -94,13 +98,18 @@ void removeDeletedCons(Genome* genome){
 void buildGenome(Genome* genome){
 	// This function is only really used if the genomes have equal fitness. 
 	
+	
 }
 
 
 
 Genome crossover(Genome* parent1, Genome* parent2){
 	
+	removeDeletedCons(parent1);
+	removeDeletedCons(parent2);
+
 	uint8_t fitnessCmp = cmpFitness(parent1, parent2);
+
 
 	Genome child;
 	
@@ -115,7 +124,7 @@ Genome crossover(Genome* parent1, Genome* parent2){
 		
 		for(uint32_t i = 0; i < child.numberOfConnections; i++){
 			int32_t temp = getCon(parent2, child.connections[i].innovation);
-			if(temp > 0){
+			if(temp >= 0){
 				
 				float random = ((float)rand() / (float)RAND_MAX) * (1.0f - 0.0f) + 0.0f;
 				
@@ -132,7 +141,7 @@ Genome crossover(Genome* parent1, Genome* parent2){
 		
 		for(uint32_t i = 0; i < child.numberOfConnections; i++){
 			int32_t temp = getCon(parent1, child.connections[i].innovation);
-			if(temp > 0){
+			if(temp >= 0){
 				
 				float random = ((float)rand() / (float)RAND_MAX) * (1.0f - 0.0f) + 0.0f;
 				
@@ -144,8 +153,66 @@ Genome crossover(Genome* parent1, Genome* parent2){
 	}
 	
 	if(fitnessCmp == EQUAL){
-			
+		child = createGenome();
+		child.connections = malloc((parent1->numberOfConnections + parent2->numberOfConnections) * sizeof(Connection));
+		child.numberOfConnections = 0;
+		child.remainingConMem = parent1->numberOfConnections + parent2->numberOfConnections;
+		
+		// Randomly choose genes which are common to both parents
 
+		for(uint32_t i = 0; i < parent1->numberOfConnections; i++){
+			int32_t temp = getCon(parent2, parent1->connections[i].innovation);
+
+			if(temp >= 0){
+				float random = ((float)rand() / (float)RAND_MAX) * (1.0f - 0.0f) + 0.0f;
+				if(random < 0.5f){
+					child.connections[child.numberOfConnections] = parent1->connections[i];
+					
+				}
+
+				else{
+					child.connections[child.numberOfConnections] = parent2->connections[temp];
+				}
+
+				child.numberOfConnections++;
+				child.remainingConMem--;
+			}
+		}
+
+		// Choose the disjoint and excess genes from both the parents randomly
+
+		// From parent1
+
+		for(uint32_t i = 0; i < parent1->numberOfConnections; i++){
+			
+			int32_t temp = getCon(parent2, parent1->connections[i].innovation);
+
+			if(temp < 0){
+				float random = ((float)rand() / (float)RAND_MAX) * 1.0f;
+
+				if(random < 0.5f){
+					child.connections[child.numberOfConnections] = parent1->connections[i];
+					child.numberOfConnections++;
+					child.remainingConMem--;
+				}
+			}
+		}
+		
+		// frome parent2
+		for(uint32_t i = 0; i < parent2->numberOfConnections; i++){
+			
+			int32_t temp = getCon(parent1, parent2->connections[i].innovation);
+
+			if(temp < 0){
+				float random = ((float)rand() / (float)RAND_MAX) * 1.0f;
+
+				if(random < 0.5f){
+					child.connections[child.numberOfConnections] = parent2->connections[i];
+					child.numberOfConnections++;
+					child.remainingConMem--;
+				}
+			}
+		}
 	}
 
 

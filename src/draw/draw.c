@@ -51,11 +51,7 @@ void createWindow(void* arg){
       exit(EXIT_FAILURE);
   }
 
-  if(IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) == 0){
-    fprintf(stderr, "Error intitializing image: %s", SDL_GetError());
-
-    exit(EXIT_FAILURE); 
-  }
+  
 
   // Bad name for the struct since most of the fields are one letter long
   window = SDL_CreateWindow(data->w.title, data->w.x, data->w.y, data->w.w, data->w.h, data->w.flags);
@@ -70,7 +66,8 @@ void createWindow(void* arg){
     currentGenome = genome; 
   
   while (!shouldClose){
-    
+		
+	
     // TODO: Add function to choose fittest genome
 
     updateCoords();

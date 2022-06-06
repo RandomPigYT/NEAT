@@ -70,12 +70,8 @@ int main(int argc, char** argv){
     //     removeNodeMut(population);
     //     sleep(1);
     // }
-
-    population[0].fitness = 1.5f;
-    population[1].fitness = 2.5f;
-
 	
-	for(int i = 0; i < 10; i++){
+   for(int i = 0; i < 10; i++){
 
     float prob = ((float)(rand())/ RAND_MAX) * (1.0f);
     if(prob < 0.3f) mutateNode(&population[1]);
@@ -83,6 +79,15 @@ int main(int argc, char** argv){
     else mutateConnection(&population[1]);
     //sleep(1);
    }
+
+
+
+    population[0].fitness = 1.5f;
+    population[1].fitness = 2.5f;
+
+	
+
+   
 
 	usleep(500000);	
 
